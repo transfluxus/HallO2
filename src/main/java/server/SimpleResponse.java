@@ -1,25 +1,28 @@
 package server;
 
-import java.util.Arrays;
+import java.util.Optional;
 
 import http.ResponseBuilder;
-import processing.core.PApplet;
 
 public class SimpleResponse extends ResponseBuilder {
 
-	
-	public SimpleResponse(){
+	public SimpleResponse() {
 	}
-	
+
 	@Override
 	public String getResponse(String requestBody) {
 		try {
 			String input = requestBody.split("=")[1];
-			input = String.join(" ",input.split("\\+"));
+			input = String.join(" ", input.split("\\+"));
 			System.out.println(input);
-//		     INSERT AI HERE!
-			return "I am a bot";
-		} catch(Exception exc) {
+			Optional<LuisResult> result = HellO2.luis.query(input);
+			if (result.isPresent()) {
+				System.out.println(result.toString());
+				// INSERT AI HERE!
+			} else {
+				return "I am a bot";
+			}
+		} catch (Exception exc) {
 			exc.printStackTrace();
 		}
 		return "Hi, Nice to meet you";
