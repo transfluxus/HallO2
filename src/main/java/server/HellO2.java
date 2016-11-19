@@ -23,14 +23,25 @@ public class HellO2{
 		loadProperties();
 		luis = new Luis();
 		
+		
 		server = new SimpleHTTPServer();
 //		server.setLoggerLevel(Level.ALL);
 		server.serve("style.css");
 		DynamicResponseHandler responder = new DynamicResponseHandler(new SimpleResponse(), "application/json");
 		server.createContext("submit", responder);
+		
 //		executeCommand("python test.py");
 		
-
+//		executeCommand("pwd");
+//		executeCommand("which node");
+//		
+//		String[] command = { "node", "app.js" };
+//		try {
+//			Process p = Runtime.getRuntime().exec(command);
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 	}
 
 	private void loadProperties() {
@@ -54,7 +65,9 @@ public class HellO2{
 		Process p;
 		try {
 			p = Runtime.getRuntime().exec(command);
+//			Runtime.getRuntime().
 			p.waitFor();
+//			p.getOutputStream();
 			output.append(getStreamAsText(p.getInputStream()));
 			output.append(getStreamAsText(p.getErrorStream()));
 		} catch (Exception e) {
