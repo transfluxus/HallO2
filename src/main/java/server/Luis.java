@@ -35,7 +35,7 @@ public class Luis {
 			       String text = "";
 			        while ((inputLine = br.readLine()) != null) {
 			        	text += inputLine;
-//			        	System.out.println(inputLine);
+			        	System.out.println(inputLine);
 			        }
 			        in.close();
 			        JSONObject jsonObj = new JSONObject(text);

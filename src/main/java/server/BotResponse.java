@@ -8,7 +8,5 @@ public abstract class BotResponse {
 		this.forIntent = forIntent;
 	}
 	
-	public String getResponse(LuisResult lr){
-		return "Answer";
-	}
+	public abstract String getResponse(LuisResult lr);
 }

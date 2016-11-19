@@ -7,5 +7,10 @@ public class GreetingsRP extends BotResponse {
 		// TODO Auto-generated constructor stub
 	}
 
+	@Override
+	public String getResponse(LuisResult lr) {
+		return "Hello there";
+	}
+
 	
 }

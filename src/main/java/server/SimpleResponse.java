@@ -21,12 +21,14 @@ public class SimpleResponse extends ResponseBuilder {
 			input = String.join(" ", input.split("\\+"));
 			System.out.println(input);
 			Optional<LuisResult> result = HellO2.luis.query(input);
-			
-			
+					
 //			System.out.println(BotConnect.query(input));
 			if (result.isPresent()) {
 				System.out.println(result.toString());
 				String intent = result.get().topIntent;
+				if(responseBuilder.containsKey(intent)){
+					return responseBuilder.get(intent).getResponse(result.get());
+				}
 //				String response = Response
 				// INSERT AI HERE!
 			} else {
