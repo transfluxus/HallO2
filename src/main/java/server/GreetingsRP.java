@@ -1,6 +1,6 @@
 package server;
 
-public class GreetingsRP extends ResponseBuilder {
+public class GreetingsRP extends BotResponse {
 
 	public GreetingsRP(String forIntent) {
 		super(forIntent);

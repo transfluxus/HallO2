@@ -7,11 +7,11 @@ import http.ResponseBuilder;
 
 public class SimpleResponse extends ResponseBuilder {
 
-	HashMap<String,ResponseBuilder> responseBuilder= new HashMap<String,ResponseBuilder>();
+	HashMap<String,BotResponse> responseBuilder= new HashMap<>();
 	
 	public SimpleResponse() {
 		GreetingsRP greetings = new GreetingsRP("greetings");
-		responseBuilder.put(greetings.forIntent,(ResponseBuilder) greetings );
+		responseBuilder.put(greetings.forIntent,  greetings );
 	}
 
 	@Override
@@ -26,7 +26,8 @@ public class SimpleResponse extends ResponseBuilder {
 //			System.out.println(BotConnect.query(input));
 			if (result.isPresent()) {
 				System.out.println(result.toString());
-				String response = Response
+				String intent = result.get().topIntent;
+//				String response = Response
 				// INSERT AI HERE!
 			} else {
 				return "I am a bot";
