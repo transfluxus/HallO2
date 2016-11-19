@@ -31,7 +31,7 @@ public class HellO2{
 		server.createContext("submit", responder);
 
         // Facebook webhook
-        DynamicResponseHandler fbResponder = new DynamicResponseHandler(new FacebookResponse(), "application/json");
+        DynamicResponseHandler fbResponder = new FbDynamicResponseHandler(new FacebookResponse(), "application/json");
         server.createContext("fb", fbResponder);
 		
 //		DynamicResponseHandler fb_responder = new DynamicResponseHandler(new SimpleResponse(), "application/json");
@@ -66,7 +66,7 @@ public class HellO2{
 	}
 	
 	
-	private static String executeCommand(String command) {
+	public static String executeCommand(String command) {
 		System.out.println(command);
 		StringBuffer output = new StringBuffer();
 		Process p;

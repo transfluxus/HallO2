@@ -16,8 +16,7 @@ public class FacebookResponse extends ResponseBuilder {
 
 	@Override
 	public String getResponse(String requestBody) {
-
-		return "Hello Facebook!";
+		return requestBody;
 	}
 
 }
