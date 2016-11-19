@@ -7,29 +7,24 @@ import java.io.InputStreamReader;
 
 import http.DynamicResponseHandler;
 import http.SimpleHTTPServer;
-import processing.core.PApplet;
+//import processing.core.PApplet;
 
-public class HellO2 extends PApplet {
+public class HellO2{
 	
 	SimpleHTTPServer server;
+//	Luis luis = new 
 	
-	public void setup(){
-		frameRate(0);
-		
-		server = new SimpleHTTPServer(this);
+	public HellO2() {
+		server = new SimpleHTTPServer();
 //		server.setLoggerLevel(Level.ALL);
 		server.serve("style.css");
-		DynamicResponseHandler responder = new DynamicResponseHandler(new SimpleResponse(this), "application/json");
+		DynamicResponseHandler responder = new DynamicResponseHandler(new SimpleResponse(), "application/json");
 		server.createContext("submit", responder);
-
-	}
-	
-	public void draw(){
-		
+		executeCommand("python test.py");
 	}
 
 	public static void main(String[] args) {
-		PApplet.main("server.HellO2");
+		new HellO2();
 	}
 	
 	

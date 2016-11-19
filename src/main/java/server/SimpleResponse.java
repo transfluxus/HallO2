@@ -7,10 +7,8 @@ import processing.core.PApplet;
 
 public class SimpleResponse extends ResponseBuilder {
 
-	PApplet pap;
 	
-	public SimpleResponse(PApplet pap){
-		this.pap = pap;
+	public SimpleResponse(){
 	}
 	
 	@Override
