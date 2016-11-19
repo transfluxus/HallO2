@@ -1,9 +1,12 @@
 package server;
 
 import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.Properties;
 
 import http.DynamicResponseHandler;
 import http.SimpleHTTPServer;
@@ -12,15 +15,30 @@ import http.SimpleHTTPServer;
 public class HellO2{
 	
 	SimpleHTTPServer server;
-//	Luis luis = new 
+	Luis luis;
+	public static Properties  properties  = new Properties();;
 	
 	public HellO2() {
+		
+		loadProperties();
+		luis = new Luis();
 		server = new SimpleHTTPServer();
 //		server.setLoggerLevel(Level.ALL);
 		server.serve("style.css");
 		DynamicResponseHandler responder = new DynamicResponseHandler(new SimpleResponse(), "application/json");
 		server.createContext("submit", responder);
-		executeCommand("python test.py");
+//		executeCommand("python test.py");
+		luis.query("Good morning");
+	}
+
+	private void loadProperties() {
+		try {
+			properties.load(new FileInputStream("config.properties"));
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public static void main(String[] args) {
