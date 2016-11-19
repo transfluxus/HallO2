@@ -29,6 +29,10 @@ public class HellO2{
 		server.serve("style.css");
 		DynamicResponseHandler responder = new DynamicResponseHandler(new SimpleResponse(), "application/json");
 		server.createContext("submit", responder);
+
+        // Facebook webhook
+        DynamicResponseHandler fbResponder = new DynamicResponseHandler(new FacebookResponse(), "application/json");
+        server.createContext("fb", fbResponder);
 		
 //		DynamicResponseHandler fb_responder = new DynamicResponseHandler(new SimpleResponse(), "application/json");
 //		server.createContext("submit", responder);
