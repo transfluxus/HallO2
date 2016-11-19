@@ -30,6 +30,9 @@ public class HellO2{
 		DynamicResponseHandler responder = new DynamicResponseHandler(new SimpleResponse(), "application/json");
 		server.createContext("submit", responder);
 		
+//		DynamicResponseHandler fb_responder = new DynamicResponseHandler(new SimpleResponse(), "application/json");
+//		server.createContext("submit", responder);
+		
 //		executeCommand("python test.py");
 		
 //		executeCommand("pwd");

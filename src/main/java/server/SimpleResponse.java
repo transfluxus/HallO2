@@ -29,6 +29,7 @@ public class SimpleResponse extends ResponseBuilder {
 				if(responseBuilder.containsKey(intent)){
 					return responseBuilder.get(intent).getResponse(result.get());
 				}
+				
 //				String response = Response
 				// INSERT AI HERE!
 			} else {

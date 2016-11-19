@@ -2,15 +2,15 @@ package server;
 
 public class GreetingsRP extends BotResponse {
 
+	String[] answers = {"Hello there", "Hi, how can I help you?", "Hi!", "Hello Hello"};
+	
 	public GreetingsRP(String forIntent) {
 		super(forIntent);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public String getResponse(LuisResult lr) {
-		return "Hello there";
+		return getRandomAnswer(answers);
 	}
 
-	
 }

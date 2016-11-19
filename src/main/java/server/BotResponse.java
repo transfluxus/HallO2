@@ -1,5 +1,7 @@
 package server;
 
+import java.util.Random;
+
 public abstract class BotResponse {
 
 	String forIntent;
@@ -9,4 +11,9 @@ public abstract class BotResponse {
 	}
 	
 	public abstract String getResponse(LuisResult lr);
+	
+	public String getRandomAnswer(String[] poss){
+		Random rnd = new Random();
+		return poss[rnd.nextInt(poss.length)];
+	}
 }
