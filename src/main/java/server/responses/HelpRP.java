@@ -20,13 +20,14 @@ public class HelpRP extends BotResponse{
 			context.actual_response = this.next;
 			return this.next.getInitResponse();
 		} else {
-			return "I am not sure if I understand you right. What can you offer?";
+			return "I am not sure if I understand you right. What would you like to give?";
+			// Shows list of options 
 		}
 	}
 
 	@Override
 	public String getInitResponse() {
-		return "!?{\"intro\":\"Cool. There are several ways you can help. I will give you some examples. Which one do you like to choose?\",\"options\":[\"A Donate useful stuff\",\"B Donate money\",\"C Donate time\"]}";
+		return "!?{\"intro\":\"Cool. There are several ways you can help. I will give you some examples. Which one do you like to choose?\",\"options\":[\"A Donate useful stuff\",\"B Donate money\",\"C Donate your time as a volunteer\"]}";
 	}
 
 

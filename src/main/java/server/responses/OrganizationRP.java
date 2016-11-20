@@ -16,7 +16,7 @@ public class OrganizationRP extends BotResponse {
 
 	@Override
 	public String getInitResponse() {
-		return "There is an organisation in " + context.getAspect("location") + ".\nCenter for Refugees NGO\nAddress: Jingoostraße 16.\nOpen every day from 8Am - 6PM.";
+		return "There is an organisation in " + context.getAspect("location") + ".\nCenter for Refugees NGO\nAddress: Jingoostraße 16.\nThey accept donations every day from 8Am - 6PM.";
 	}
 
 	@Override

@@ -20,10 +20,12 @@
 
 .avatar {
 	background-color: white;
-	width: 20px;
-	height: 20px;
+	width: 45px;
+	height: 45px;
 	border-radius: 20px;
-
+	display: inline-block;
+	vertical-align: top;
+	padding: 5px; 
 }
 
 #inputContainer {
@@ -37,7 +39,6 @@
 	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
 	box-sizing: border-box;         /* Opera/IE 8+ */
     border-color: rgb(218,218,218);
-
 }
 
 .textContainer {
@@ -45,35 +46,45 @@
 	width: 100%;
 }
 
+
+
 .text {
 	border-top-left-radius: 30px;
 	border-top-right-radius: 30px;
 	max-width: 40%;
 	margin-top: 20px;
 	margin: 5px;
-	position: relative;
+	/*position: relative;*/
 	padding: 10px 20px 10px 20px;
 	clear: both;
 	word-wrap: break-word;
+	display: inline-block;
 }
 
 .user {	
 	right: 2%;
-	float: right;
+	display: inline-block;
+	vertical-align: top;
+	/*float: right;*/
 	background-color: rgb(72,122,255);
 	color: rgb(255,255,255);
 	border-bottom-right-radius: 8px;
 	border-bottom-left-radius: 30px;
+}
 
+.userBubble {
+	text-align: right;
 }
 
 .bot {
-	left: 2%;
-	float: left;
 	background-color: rgb(232,228,236);
 	color: black;
 	border-bottom-left-radius: 8px;
 	border-bottom-right-radius: 30px;
+}
+
+.botBubble {
+
 }
 
 #input {

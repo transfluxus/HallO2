@@ -6,7 +6,7 @@ import server.LuisResult;
 
 public class LocateRP extends BotResponse {
 
-	String[] inits = {"What is your current location?"};
+	String[] inits = {"Please specify the neighbourhood where you'd like to become active?"};
 	
 	public LocateRP(Context context, String forIntent, Input input) {
 		super(context, forIntent, input);
@@ -25,7 +25,7 @@ public class LocateRP extends BotResponse {
 			context.actual_response = this.next;
 			return this.next.getInitResponse();
 		} else {
-			return "I am not sure if I understand you right. Where can you help?";
+			return "I am not sure if I understand you right. In which neighbourhood do you want to help?";
 		}
 	}
 

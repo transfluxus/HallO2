@@ -6,7 +6,7 @@ import server.LuisResult;
 
 public class EndingRP extends BotResponse{
 
-	String[] endings = {"Super, thank you!", "Great, thank you!","Sounds good, thank you"};
+	String[] endings = {"Awesome! Thanks so much for your contribution. Show that you are a part of “Germany can do” by spreading the message"};
 			
 
 	public EndingRP(Context context, String forIntent) {

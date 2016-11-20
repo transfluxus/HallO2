@@ -6,7 +6,7 @@ import server.LuisResult;
 
 public class GreetingsRP extends BotResponse {
 
-//	String[] answers = {"Hello there.", "Hi, how can I help you?", "Hi!", "Hello Hello."};
+	String[] answers = {"Hello there.", "Hi, how can I help you?", "Hi!", "Hello Hello."};
 	String definite_extension = "How do you want to help?";
 
 	
@@ -14,7 +14,6 @@ public class GreetingsRP extends BotResponse {
 		super(context, forIntent, null);
 	}
 
-	
 	@Override
 	public String getResponse(LuisResult lr) {
 		context.actual_response = this.next;
