@@ -6,7 +6,9 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.HashMap;
 import java.util.Properties;
+import java.util.logging.Level;
 
 import http.DynamicResponseHandler;
 import http.SimpleHTTPServer;
@@ -16,7 +18,8 @@ public class HellO2{
 	
 	SimpleHTTPServer server;
 	static Luis luis;
-	public static Properties  properties  = new Properties();;
+	public static Properties  properties  = new Properties();
+	public static HashMap<Long,Context> sessions = new HashMap<>();
 	
 	public HellO2() {
 		
@@ -26,17 +29,18 @@ public class HellO2{
 		
 		server = new SimpleHTTPServer();
 //		server.setLoggerLevel(Level.ALL);
-		server.serve("style.css");
+//		server.serve("style.css");
+		
+		server.serveAll("");
 		DynamicResponseHandler responder = new DynamicResponseHandler(new SimpleResponse(), "application/json");
 		server.createContext("submit", responder);
 
         // Facebook webhook
-        DynamicResponseHandler fbResponder = new DynamicResponseHandler(new FacebookResponse(), "application/json");
-        server.createContext("fb", fbResponder);
-		
-//		DynamicResponseHandler fb_responder = new DynamicResponseHandler(new SimpleResponse(), "application/json");
-//		server.createContext("submit", responder);
-		
+//        DynamicResponseHandler fbResponder = new DynamicResponseHandler(new FacebookResponse(), "application/json");
+//        server.createContext("fb", fbResponder);
+
+		DynamicResponseHandler sessionIdResp = new DynamicResponseHandler(new SessionIdResponse(), "application/json");
+		server.createContext("id", sessionIdResp);		
 //		executeCommand("python test.py");
 		
 //		executeCommand("pwd");

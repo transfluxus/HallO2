@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class LuisResult {
 
 	String topIntent;
-	ArrayList<Entity> entities;
+	public ArrayList<Entity> entities;
 
 	
 	public LuisResult(String topIntent, ArrayList<Entity> entities) {
@@ -19,7 +19,7 @@ public class LuisResult {
 		for(Entity ent : entities){
 			sb.append(ent.toString());
 		}
-		return topIntent+" -- "+sb.toString();
+		return "INTENT:"+topIntent+" -- "+sb.toString();
 	}
 	
 	public static class Entity {
@@ -38,7 +38,7 @@ public class LuisResult {
 		}
 		
 		public String toString(){
-			return " " + entity + ":" +score + " ";
+			return " " + entity + "(" +type + ") ";
 		}
 		
 	}

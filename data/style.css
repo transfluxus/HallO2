@@ -15,14 +15,29 @@
 	display:block;
 	overflow: auto;
 	height:85%;
-	background-color: rgb(240,220,220);
+	background-color: rgb(255,255,255);
+}
+
+.avatar {
+	background-color: white;
+	width: 20px;
+	height: 20px;
+	border-radius: 20px;
+
 }
 
 #inputContainer {
 	display:block;
 	overflow: auto;
 	height:15%;
-	background-color: rgb(200,200,220);	
+	background-color: rgb(255,255,255);
+	border-style: solid;
+    border-width: 5px 0px 0px 0px;
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
+	box-sizing: border-box;         /* Opera/IE 8+ */
+    border-color: rgb(218,218,218);
+
 }
 
 .textContainer {
@@ -31,44 +46,56 @@
 }
 
 .text {
-	background-color: white;
-	border-radius: 6px;
+	border-top-left-radius: 30px;
+	border-top-right-radius: 30px;
 	max-width: 40%;
 	margin-top: 20px;
 	margin: 5px;
 	position: relative;
-	padding: 10px;
+	padding: 10px 20px 10px 20px;
 	clear: both;
 	word-wrap: break-word;
 }
 
 .user {	
-	left: 2%;
-	float: left;
+	right: 2%;
+	float: right;
+	background-color: rgb(72,122,255);
+	color: rgb(255,255,255);
+	border-bottom-right-radius: 8px;
+	border-bottom-left-radius: 30px;
+
 }
 
 .bot {
-	right: 2%;
-	float: right;
+	left: 2%;
+	float: left;
+	background-color: rgb(232,228,236);
+	color: black;
+	border-bottom-left-radius: 8px;
+	border-bottom-right-radius: 30px;
 }
 
 #input {
 	position: relative;
-	width: 90%;
+	width: 96%;
 	margin-left: 1%;
 	margin-top: 1%;
-	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
-	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
-	box-sizing: border-box;         /* Opera/IE 8+ */
 	resize: none;
 	overflow: hidden;
 	font-size: 1em;
-	border-radius: 4px;
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
+	box-sizing: border-box;         /* Opera/IE 8+ */
+    border-color: rgb(255,255,255);
+    outline: none;
+    /*font-family: 'Karla', sans-serif;*/
 }
 
 body { 
 	font-size: 2em;
 	overflow: hidden;
+	/*font-family: 'Karla', sans-serif;*/
 }
 
 /*@media only screen and (max-width: 540px) {
