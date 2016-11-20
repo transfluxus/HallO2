@@ -41,6 +41,7 @@ public class HellO2{
 
 		DynamicResponseHandler sessionIdResp = new DynamicResponseHandler(new SessionIdResponse(), "application/json");
 		server.createContext("id", sessionIdResp);		
+
 //		executeCommand("python test.py");
 		
 //		executeCommand("pwd");
@@ -70,7 +71,7 @@ public class HellO2{
 	}
 	
 	
-	private static String executeCommand(String command) {
+	public static String executeCommand(String command) {
 		System.out.println(command);
 		StringBuffer output = new StringBuffer();
 		Process p;
