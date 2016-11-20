@@ -52,7 +52,7 @@ public class Context {
 		ending = new EndingRP(this, "ending");
 		organisation.setNext(ending);
 		
-		actual_response = help;
+		actual_response = greetings;
 	}
 
 	public String getResponse(LuisResult result) {

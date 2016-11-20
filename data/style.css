@@ -89,13 +89,13 @@
 	box-sizing: border-box;         /* Opera/IE 8+ */
     border-color: rgb(255,255,255);
     outline: none;
-    /*font-family: 'Karla', sans-serif;*/
+    font-family: 'Karla', sans-serif;
 }
 
 body { 
 	font-size: 2em;
 	overflow: hidden;
-	/*font-family: 'Karla', sans-serif;*/
+	font-family: 'Karla', sans-serif;
 }
 
 /*@media only screen and (max-width: 540px) {

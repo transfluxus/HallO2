@@ -26,7 +26,7 @@ public class HelpRP extends BotResponse{
 
 	@Override
 	public String getInitResponse() {
-		return "How do you want to help?";
+		return "!?{\"intro\":\"Cool. There are several ways you can help. I will give you some examples. Which one do you like to choose?\",\"options\":[\"A Donate useful stuff\",\"B Donate money\",\"C Donate time\"]}";
 	}
 
 
