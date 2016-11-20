@@ -1,101 +1,114 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <title>HellO2</title>
-  <script   src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
-  <link rel="stylesheet" type="text/css" href="style.css">
-  <link href="https://fonts.googleapis.com/css?family=Karla" rel="stylesheet">
+    <title>HellO2</title>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Karla" rel="stylesheet">
 </head>
+
 <body>
-  <div id="content">
-    <div id='header'>
-  
+    <div id="content">
+        <div id='header'>
+
+        </div>
+
+        <div id='chat'>
+
+        </div>
+        <div id='inputContainer'>
+            <textarea id='input' rows="2" cols="30" onkeypress="handleKeyPress(event)"></textarea>
+        </div>
     </div>
 
-    <div id='chat'>
-
-    </div>
-    <div id='inputContainer'> 
-      <textarea id='input' rows="2" cols="30" onkeypress="handleKeyPress(event)"></textarea>
-    </div>
-  </div>
-
-  <script type="text/javascript">
-    function handleKeyPress(e){
-     var key=e.keyCode || e.which;
-      if (key==13){
-        submit($('#input')[0].value);
-        e.preventDefault();
-        return false;
-      }
-    }
-
-    function submit(text){
-      console.log('sending: ' + text);
-      add('user',text);
-      $('#input')[0].value = ""; 
-      $.post("/submit",{
-        input: text,
-        id: sessionId
-      },
-      function(response){
-        console.log(response);
-        if(response=='NO'){
-          return;
+    <script type="text/javascript">
+        function handleKeyPress(e) {
+            var key = e.keyCode || e.which;
+            if (key == 13) {
+                submit($('#input')[0].value);
+                e.preventDefault();
+                return false;
+            }
         }
 
-        add('bot',response);
-      },
-      'text'
-      );
+        function submit(text) {
+            console.log('sending: ' + text);
+            add('user', text);
+            $('#input')[0].value = "";
+            $.post("/submit", {
+                    input: text,
+                    id: sessionId
+                },
+                function(response) {
+                    console.log(response);
+                    if (response == 'NO') {
+                        return;
+                    }
+                    add('bot', response);
+                },
+                'text'
+            );
 
-    }
+        }
 
-      var sessionId = -1;
+        var sessionId = -1;
 
-      function getId() {
-        console.log("getting id");
-        $.get("/id",function(data){
-            sessionId = parseInt(data);
-            console.log("session id: "+sessionId);
-        })
-         //  var aj = $.ajax({
-         //  type: "GET",
-         //  // contentType: "application/json",
-         //  url: '/id',
-         //  dataType: "text",
-         //  succes : function(data){
-         //    console.log(data);
-         //    sessionId = parseInt(data);
-         //    console.log("session id: "+sessionId);
-         //  }, error: function(a,b,c){
-         //     console.log(a);
-         //     console.log(b);
-         //     console.log(c);
-         //  }
-         // });   
-      }
+        function getId() {
+            console.log("getting id");
+            $.get("/id", function(data) {
+                sessionId = parseInt(data);
+                console.log("session id: " + sessionId);
+            })
+        }
 
-    function add(who,text){
-      console.log('adding '+ text);
-      var container = $('<div>').addClass('textContainer');
-      var textBox = $('<div>').addClass('text').addClass(who).html(text).appendTo(container);
-      container.appendTo($('#chat'));
-        var chat    = $('#chat');
-        chat.scrollTop(chat[0].scrollHeight);
+        function add(who, text) {
+            console.log('adding ' + text);
+            var container = $('<div>').addClass('textContainer');
 
-      if(who=="user"){
-                var avatar = $("<img>").attr("src","user-avatar.jpeg").addClass("avatar");
-                avatar.appendTo(textBox);
+            if (text.startsWith("!?")) {
+                text = text.substring(2, text.length);
+                console.log(text);
+                var options = JSON.parse(text);
+
+                var textBox = $('<div>').addClass('text').addClass(who);
+                var span = $("<span>").html(options.intro);
+                span.appendTo(textBox);
+                $("<br>").appendTo(textBox);
+                for (var i = 0; i < options.options.length; i++) {
+                    var span = $("<span>").html(options.options[i]);
+                    span.appendTo(textBox);
+                    $("<br>").appendTo(textBox);
+                }
+                console.log(JSON.parse(text));
             } else {
-                var avatar = $("<img>").attr("src","bot-avatar.jpeg").addClass("avatar");
-                avatar.appendTo(textBox);                
+                var textBox = $('<div>').addClass('text').addClass(who).html(text).appendTo(container);
             }
-    }
+            if (who == "user") {
+                // !debugger;
+                console.log("USER");
+                var bubble = $('<div>').addClass('userBubble');
+                var avatar = $("<img>").attr("src", "user-avatar.png").addClass("avatar");
+                textBox.appendTo(bubble);
+                avatar.appendTo(bubble);
+            } else {
+                var bubble = $('<div>').addClass('botBubble');
+                var avatar = $("<img>").attr("src", "bot-avatar.png").addClass("avatar");
+                avatar.appendTo(bubble);
+                textBox.appendTo(bubble);
+            }
+            bubble.appendTo(container);
+            container.appendTo($('#chat'));
+            var chat = $('#chat');
+            chat.scrollTop(chat[0].scrollHeight);            
+        }
 
-    getId();
-    add("bot","Great that you are you! How do you want to help?");
-    // submit("How are you?");
-  </script>
+        getId();
+        add("bot", "Great that you are you! How do you want to help?");
+        add("bot", '!?{"intro":"What do you want to do?","options":["A this","B that","C those"]}');
+        add("user", 'I want to donate something');
+        // submit("How are you?");
+    </script>
 </body>
+
 </html>
